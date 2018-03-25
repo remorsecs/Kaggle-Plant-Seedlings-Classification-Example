@@ -58,13 +58,12 @@ class VGG16(nn.Module):
 
         # initialize parameters
         for module in self.modules():
+            # module.reset_parameters()
             if isinstance(module, nn.Conv2d):
                 n = module.kernel_size[0] * module.kernel_size[1] * module.out_channels
-                # module.reset_parameters()
                 module.weight.data.normal_(0, math.sqrt(2. / n))
                 module.bias.data.zero_()
             elif isinstance(module, nn.Linear):
-                # module.reset_parameters()
                 module.weight.data.normal_(0, 0.01)
                 module.bias.data.zero_()
 
