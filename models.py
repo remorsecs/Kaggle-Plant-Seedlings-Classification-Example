@@ -1,4 +1,5 @@
 import torch.nn as nn
+import torch.nn.functional as F
 import math
 
 
@@ -72,4 +73,4 @@ class VGG16(nn.Module):
         # flatten
         x = x.view(x.size(0), -1)
         x = self.classifier(x)
-        return x
+        return F.softmax(x)
