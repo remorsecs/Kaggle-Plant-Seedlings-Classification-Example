@@ -1,10 +1,8 @@
 import torch.nn as nn
-import torch.nn.functional as F
 import math
 
 
 class VGG16(nn.Module):
-
     def __init__(self, num_classes=1000):
         super(VGG16, self).__init__()
         self.features = nn.Sequential(
@@ -59,7 +57,6 @@ class VGG16(nn.Module):
 
         # initialize parameters
         for module in self.modules():
-            # module.reset_parameters()
             if isinstance(module, nn.Conv2d):
                 n = module.kernel_size[0] * module.kernel_size[1] * module.out_channels
                 module.weight.data.normal_(0, math.sqrt(2. / n))
@@ -73,4 +70,4 @@ class VGG16(nn.Module):
         # flatten
         x = x.view(x.size(0), -1)
         x = self.classifier(x)
-        return F.softmax(x)
+        return x
