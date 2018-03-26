@@ -5,10 +5,13 @@ from dataset import PlantSeedlingDataset
 from utils import parse_args
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
-from torchvision.datasets import ImageFolder
 from torchvision import transforms
 from pathlib import Path
 import copy
+
+
+args = parse_args()
+CUDA_DEVICES = args.cuda_devices
 
 
 def train(dataset_root):
@@ -21,7 +24,7 @@ def train(dataset_root):
     data_loader = DataLoader(dataset=train_set, batch_size=32, shuffle=True, num_workers=1)
 
     model = VGG16(num_classes=train_set.num_classes)
-    model = model.cuda(1)
+    model = model.cuda(CUDA_DEVICES)
     model.train()
 
     best_model_params = copy.deepcopy(model.state_dict())
@@ -38,8 +41,8 @@ def train(dataset_root):
         training_corrects = 0
 
         for i, (inputs, labels) in enumerate(data_loader):
-            inputs = Variable(inputs.cuda(1))
-            labels = Variable(labels.cuda(1))
+            inputs = Variable(inputs.cuda(CUDA_DEVICES))
+            labels = Variable(labels.cuda(CUDA_DEVICES))
 
             optimizer.zero_grad()
 
@@ -67,5 +70,4 @@ def train(dataset_root):
 
 
 if __name__ == '__main__':
-    args = parse_args()
     train(args.path)
