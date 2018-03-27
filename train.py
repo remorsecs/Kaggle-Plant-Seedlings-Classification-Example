@@ -12,15 +12,16 @@ import copy
 
 args = parse_args()
 CUDA_DEVICES = args.cuda_devices
+DATASET_ROOT = args.path
 
 
-def train(dataset_root):
+def train():
     data_transform = transforms.Compose([
         transforms.RandomResizedCrop(224),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
-    train_set = PlantSeedlingDataset(Path(dataset_root).joinpath('train'), data_transform)
+    train_set = PlantSeedlingDataset(Path(DATASET_ROOT).joinpath('train'), data_transform)
     data_loader = DataLoader(dataset=train_set, batch_size=32, shuffle=True, num_workers=1)
 
     model = VGG16(num_classes=train_set.num_classes)
@@ -70,4 +71,4 @@ def train(dataset_root):
 
 
 if __name__ == '__main__':
-    train(args.path)
+    train()
