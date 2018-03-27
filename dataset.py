@@ -19,11 +19,6 @@ class PlantSeedlingDataset(Dataset):
 
                 self.num_classes += 1
 
-        elif self.root_dir.name == 'test':
-            for file in self.root_dir.glob('*'):
-                self.x.append(file)
-                self.y.append(None)
-
     def __len__(self):
         return len(self.x)
 
