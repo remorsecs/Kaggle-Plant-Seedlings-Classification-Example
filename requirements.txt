@@ -1,4 +1,4 @@
 pandas==0.22.0
-pillow==5.0.0
+pillow
 tqdm==4.19.5
 torchvision==0.2.0
