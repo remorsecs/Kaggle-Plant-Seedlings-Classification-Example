@@ -1,4 +1,4 @@
-# Kaggle-plant-seedlings-classification
+# Kaggle-Plant-Seedlings-Classification-Example
 
 Just for ML course.
 
@@ -21,3 +21,11 @@ conda install pytorch torchvision cuda90 -c pytorch
 
 pip install -r requirements.txt
 ```
+
+## GitHub Repository
+
+https://github.com/remorsecs/Kaggle-Plant-Seedlings-Classification-Example
+
+## Contributing
+
+All contributions are welcome.
