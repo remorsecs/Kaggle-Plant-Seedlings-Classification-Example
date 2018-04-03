@@ -28,4 +28,4 @@ https://github.com/remorsecs/Kaggle-Plant-Seedlings-Classification-Example
 
 ## Contributing
 
-All contributions are welcome.
+All contributions welcome.
