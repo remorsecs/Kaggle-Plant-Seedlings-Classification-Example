@@ -15,7 +15,6 @@ PyTorch, see: https://pytorch.org/get-started/locally/
 The others:
 
 ```bash
-conda create -n pytorch python=3.6
 pip install -r requirements.txt
 ```
 
